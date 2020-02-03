@@ -71,8 +71,34 @@ string ToUpper(string p){
   return p;
 }
 string Substr(string str, char s, char e){
-  string newstr;
-  
+  int start, end;
+  string subst = "";
+  int size = str.length();
+  for(int ind = 0; ind < size; ind++)
+  {
+    if(s==str[ind])
+    {
+      start = ind;
+      continue;
+    }
+    if(e!=str[ind]){
+      end = str.length();
+    }
+    else if(e==str[ind])
+    {
+      end = ind;
+      break;
+    }
+  }
+  if (start < 0){
+    return subst;
+  }
+  for(int s = start; s<end; s++)
+  {
+    subst = subst + str[s];
+  }
+
+return subst;
 }
 
 
@@ -81,14 +107,16 @@ int main()
 {
     srand(time(NULL));
     std::string str = RandStr((rand() % 41 + 20));
+    char s,e;
+    s = 'a';
+    e = 'z';
 
     std::cout << "The random string generated is\n" << str << "\n";
     
     std::cout << "The letter count is " << LetterCount(str) << std::endl;
-
+    std::cout << "Substr: " << Substr(str, s, e) << std::endl;
     std::cout << "to lower: " << ToLower(str) << std::endl;
     std::cout << "to upper: " << ToUpper(str) << std::endl;
-
     
 
     return 0;
