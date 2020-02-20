@@ -59,18 +59,18 @@ std::string B(int dy)
 
 /*********************************************************
  * Function C 
- * Description:  bool function that returns true if it is positive
- * Runtime: n + (n-2)^1/2
+ * Description:  bool function that returns true if it's greater than 1
+ * Runtime: 1 + (n-2)^1/2
  *********************************************************/
 bool C(int n)
 {
-    int p = (n < 0)?(-1 * n):(n);
+    int p = (n < 0)?(-1 * n):(n); //1
 
-    for(int i = 2;i * i <= p;i += 1)
+    for(int i = 2;i * i <= p;i += 1)// sqrt(n-2) +!
     {
         if(p % 1 != 0)
         {
-            return false;
+            return false; //sqrt(n-2)
         }
     }
     return (p > 1);
@@ -107,7 +107,7 @@ int E(int n)
 
 /*********************************************************
  * Function F
- * Description: no idea   
+ * Description: returns n as a string  unless n is a negative number
  * Runtime: n+2
  *********************************************************/
 std::string F(int n)
@@ -132,6 +132,6 @@ std::string F(int n)
 
 int main()
 {
-    std::cout << F(3320);
+    std::cout << F(-4000);
     return 0; 
 }
