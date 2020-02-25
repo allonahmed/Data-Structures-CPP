@@ -39,11 +39,11 @@ void printArr(ds::Array<int>& arr, int size){
 }
 
 
-int modeArr(ds::Array<int>& arr, int size)    // only if SortedInts
+void modeArr(ds::Array<int>& arr, int size)    // only if SortedInts
 {
   int count = 1;
   int max = 1;
-  int mode = 0; 
+  int mode = arr[0]; 
   for (int i = 0; i<size-1; i++){
     if(arr[i]==arr[i+1])
     {
@@ -51,6 +51,7 @@ int modeArr(ds::Array<int>& arr, int size)    // only if SortedInts
     }
     else
     {
+      count = 1;
       continue;
     }
     if(count>max)
@@ -58,11 +59,10 @@ int modeArr(ds::Array<int>& arr, int size)    // only if SortedInts
       max = count;
       mode = arr[i];
     }
-    count = 1;
     }
-    return mode;
+    
+    std::cout<< "The mode is " << mode << ". And the count is " << max << std::endl;
 }
-
 
 int differenceElement(ds::Array<int>& arr, int target){
   int count = 0;
@@ -79,8 +79,8 @@ int differenceElement(ds::Array<int>& arr, int target){
 
 template <typename T>
 T getCommon(ds::Array<T>& arr1, ds::Array<T>& arr2){
-  ds::Array<int> newarr;
-  int count = -1;
+  
+  int count = 0;
   for (int x = 0; x<arr1.Length(); x++){
     for (int y = 0; y<arr2.Length(); y++){
       if(arr1[x]==arr2[y]){
@@ -97,7 +97,7 @@ T getCommon(ds::Array<T>& arr1, ds::Array<T>& arr2){
 int main()
 {
     srand(time(NULL));
-    int size  = 15;
+    int size  = 20;
     ds::Array<int> data[1] = {ds::Array<int>(size)};
     ds::Array<int> data2[1] = {ds::Array<int>(size)};
     
@@ -107,12 +107,13 @@ int main()
 
     
     std::cout << "Sorted array: " << data[0] << std::endl;
-    std::cout << "The mode of this array is " << modeArr(data[0], size) << std::endl;
+    // std::cout << "The mode of this array is " << modeArr(data[0], size) << std::endl;
+    modeArr(data[0],size);
     std::cout << "Second sorted array: " << data2[0] << std::endl;
-    std::cout << "The mode of this array is " << modeArr(data2[0], size) << std::endl;
+    // std::cout << "The mode of this array is " << modeArr(data2[0], size) << std::endl;
     SortedInts(data[0], 0, false);
     SortedInts(data2[0], 0, false);
-    std::cout << "The ammount of common numbers are " << getCommon(data[0], data2[0]) << std::endl;
+    std::cout << "The ammount of common numbers are " << getCommon(data2[0], data2[0]) << std::endl;
     int target = 50;
     std::cout << "The number of pairs that is equal to the target " << target << " is " << differenceElement(data2[0], target) << std::endl;
 
