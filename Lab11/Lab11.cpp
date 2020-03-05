@@ -8,6 +8,7 @@
 
 bool IsLine(ds::Vector<Point>& coors)
 {
+
     return false;
 }
 
@@ -27,24 +28,17 @@ int getCount(ds::Node<T>* head)
 template<typename T>
 ds::Node<T>* MiddleNode(ds::Node<T>* head)
 {
-    int count = getCount(head);
-    if(count%2!=0){
-      count = count + 1;
-    }
-    ds::Node<T>* tmp = head;
+  
+    ds::Node<T>* tmp1 = head;
+    ds::Node<T>* tmp2 = head;
     
-    // for(int i = 0; i<count/2;i++){
-    //     tmp= tmp->GetLink(); 
-    // }
-    ds::Node<T>* red;
-    int i =0;
-    while(i<count/2){
-      tmp = tmp->GetLink();
-      i++;
-    }
-
-    
-    return tmp;
+    while (tmp2 != NULL && tmp2->GetLink() != NULL)  
+        {   
+            tmp1 = tmp1->GetLink(); 
+            tmp2 = tmp2->GetLink()->GetLink();  
+        } 
+   
+    return tmp1;
 }
 
 
@@ -108,5 +102,5 @@ ds::Node<int>* GenerateList(int n)
 
 int main()
 {
-    return 0; 
+   
 }
