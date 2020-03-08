@@ -4,22 +4,24 @@
 #include "Node.h"
 #include "Iterator.h"
 
+
 template <typename T>
-ds::Node<T>* ReverseCopy(ds::Node<T>* root)
+ds::Node<T>* ReverseCopy(ds::Node<T>* head)
 { 
-    ds::Node<T>* tmp = root, *prev = NULL, *next = NULL;
+  ds::Node<T>* tmp = head; 
+  ds::Node<T>* prev = NULL;
+  ds::Node<T>* next = NULL; 
 
-    while(tmp!=NULL){
-      next =tmp->GetLink();
-      tmp->GetLink() = prev->GetLink();
-      prev = tmp;
-      tmp = next;
-    }
-    tmp = prev;
+  while (tmp != NULL) {  
+    next = tmp->GetLink(); //sets next node
+    tmp->SetLink(prev); //sets current node equal to previous link
+    prev = tmp; 
+    tmp = next; 
+  } 
+  head = prev; 
+  return head;
+} 
 
-  
-    return NULL;
-}
 
 void SelectionSort(ds::Node<double>* root)
 {
@@ -120,13 +122,14 @@ int main()
   int n = 10;
   
   ds::Node<double>* value = new ds::Node<double>;
- for(double i = 0;i < 10;i += 1)
+ for(double i = 1;i < 10;i += 1)
 	{
 		AppendToBack(value,i);
 	}
   Traverse(value);
 
-  std::cout << "reverse: \n";
-  ReverseCopy(value);
+  std::cout << "\nreverse: \n";
+  ds::Node<double>* rev = ReverseCopy(value);
+  Traverse(rev);
     
 }
