@@ -27,13 +27,13 @@ bool Similar(ds::Node<T>* ptr1,ds::Node<T>* ptr2)
 // both numbers have three distinct digits.
 
 
-// bool count(int num){
-//     int newnum;
-//     while(newnum!=0){
-//         newnum = num%10
-//     }
+bool count(int num){
+    int newnum;
+    while(newnum!=0){
+        newnum = num%10
+    }
     
-// }
+}
 bool DigitCount(int num1,int num2)
 {
     

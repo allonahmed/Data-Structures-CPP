@@ -41,6 +41,20 @@ ds::Node<T>* MiddleNode(ds::Node<T>* head)
     return tmp1;
 }
 
+template<typename T>
+ds::Node<T>* MiddleNode1(ds::Node<T>* head){
+    int size = getCount(head);
+    ds::Node<T>* tmp = head;
+    if(size%2==0){
+        size+=1;
+    }
+    int i =0;
+    while(tmp->GetData()!=size){
+        tmp = tmp->GetData();
+       
+    }
+    return tmp;
+}
 
 
 /********************************
@@ -102,5 +116,7 @@ ds::Node<int>* GenerateList(int n)
 
 int main()
 {
-   
+   ds::Node<int>* value = GenerateList(9);
+   Print(value);
+   Print(MiddleNode(value));
 }
