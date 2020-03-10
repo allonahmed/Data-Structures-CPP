@@ -3,27 +3,16 @@
 #include <ctime>
 #include "Node.h"
 #include "Iterator.h"
-#include "Point.h"
+// #include "Point.h"
 #include "Vector.h"
 
-bool IsLine(ds::Vector<Point>& coors)
-{
+// bool IsLine(ds::Vector<Point>& coors)
+// {
 
-    return false;
-}
+//     return false;
+// }
 
-template<typename T>
-int getCount(ds::Node<T>* head)  
-{  
-    int count = 0; // Initialize count  
-    ds::Node<T>* current = head; // Initialize current  
-    while (current->GetLink() != NULL)  
-    {  
-        count++;  
-        current = current->GetLink();  
-    }  
-    return count;  
-}  
+
 
 template<typename T>
 ds::Node<T>* MiddleNode(ds::Node<T>* head)
@@ -31,31 +20,19 @@ ds::Node<T>* MiddleNode(ds::Node<T>* head)
   
     ds::Node<T>* tmp1 = head;
     ds::Node<T>* tmp2 = head;
-    
+    if(tmp1->GetLink()==NULL){
+      // std::cout << "NULL"; 
+      return NULL;
+    }
     while (tmp2 != NULL && tmp2->GetLink() != NULL)  
         {   
             tmp1 = tmp1->GetLink(); 
             tmp2 = tmp2->GetLink()->GetLink();  
+            std::cout << "   ";
         } 
    
     return tmp1;
 }
-
-template<typename T>
-ds::Node<T>* MiddleNode1(ds::Node<T>* head){
-    int size = getCount(head);
-    ds::Node<T>* tmp = head;
-    if(size%2==0){
-        size+=1;
-    }
-    int i =0;
-    while(tmp->GetData()!=size){
-        tmp = tmp->GetData();
-       
-    }
-    return tmp;
-}
-
 
 /********************************
  * Helper Functions : Begin
@@ -116,7 +93,8 @@ ds::Node<int>* GenerateList(int n)
 
 int main()
 {
-   ds::Node<int>* value = GenerateList(9);
-   Print(value);
-   Print(MiddleNode(value));
+   ds::Node<int>* link = GenerateList(13);
+   Print(link);
+   std::cout << std::endl;
+   Print(MiddleNode(link));
 }
