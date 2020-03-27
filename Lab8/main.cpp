@@ -24,15 +24,6 @@ void Traverse(ds::Node<T>* root)
 	std::cout << "]";
 }
 
-template <typename T>
-void traverse1(ds::Node<T>* root){
-  ds::Node<T>* n = root;
-  while(n!=NULL){
-    std::cout << n->GetData() << " ";
-    n = n->GetLink();
-  }
-}
-
 template<typename T>
 void AppendToBack(ds::Node<T>*& root,const T& data)
 {
@@ -55,14 +46,33 @@ void AppendToBack(ds::Node<T>*& root,const T& data)
 template <typename T>
 void SwapNodes(ds::Node<T>* root,ds::Node<T>* nptr1,ds::Node<T>* nptr2)
 {
-  ds::Node<T>* tmp = root, *prev;
-  while(tmp!=NULL){
-    if(nptr2->GetData() == nptr1->GetData()){
-      return;
-    }
+  ds::Node<T>* tmp = root, *prev, *prev2, *tmp2 = root, *next, *next2;
+  if (nptr1==nptr2){
+    return;
   }
-  
+  while(tmp!=nptr1){
+    prev = tmp;
+    next = tmp->GetLink()->GetLink();
+    tmp = tmp->GetLink();
     
+  }
+  while(tmp2!=nptr2){
+    prev2 = tmp2;
+    next2 = tmp2->GetLink()->GetLink();
+    tmp2 = tmp2->GetLink();
+  }
+
+  prev->SetLink(tmp2);
+  tmp2->SetLink(next);
+  prev2->SetLink(tmp);
+  tmp->SetLink(next2);
+
+  nptr1 = tmp;
+  nptr2 = tmp2;
+  delete tmp;
+  tmp =NULL;
+  delete tmp2;
+  tmp2 = NULL;   
 }
 template <typename T>
 void RemoveAll(ds::Node<T>* root,const int target)
@@ -106,21 +116,15 @@ double  SecondLargest(ds::Node<C>* root)
   }
   return secondMax;
 }
+
 int main()
 {
   srand(time(NULL));
 	ds::Node<int>* value = NULL;
-
-	for(int i = 0;i < 10;i += 1)
+	for(int i = 1;i < 10;i += 1)
 	{
-		AppendToBack(value,i);
+    int num = rand() %100 +1;
+		AppendToBack(value,num);
 	}
   Traverse(value);
-  std::cout<< "\nSecond largest value is " << SecondLargest(value) << std::endl;
-  
-  RemoveAll(value, 4);
-  std::cout << "\n";
-  Traverse(value);
-  
-
 }

@@ -113,7 +113,7 @@ int main()
     // std::cout << "The mode of this array is " << modeArr(data2[0], size) << std::endl;
     SortedInts(data[0], 0, false);
     SortedInts(data2[0], 0, false);
-    std::cout << "The ammount of common numbers are " << getCommon(data2[0], data2[0]) << std::endl;
+    std::cout << "The ammount of common numbers are " << getCommon(data[0], data2[0]) << std::endl;
     int target = 50;
     std::cout << "The number of pairs that is equal to the target " << target << " is " << differenceElement(data2[0], target) << std::endl;
 

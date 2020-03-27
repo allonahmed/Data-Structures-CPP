@@ -47,8 +47,9 @@ class Square : public Shape{
       return side;
       }
 
-    void setSide(double side)
+    void setSide(double squareSide)
     {
+       side = squareSide;
        if(side<0)
        {
          throw "invalid input";

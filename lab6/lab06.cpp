@@ -73,6 +73,8 @@ int main()
     srand(time(NULL));
     ds::Array<int> arr1[1] = {ds::Array<int>(15)};
     std::cout << std::boolalpha;
+
+    ds::Array<int> arr2[] = {9,7,5,3,1};
     
     RandInts(*arr1, 99, 10);
 
@@ -85,9 +87,8 @@ int main()
     std::cout << "\nSorted Array: " << arr1[0];
 
 
-    std::cout << std::boolalpha;
+   
     std::cout << std::endl << Monotonic(arr1[0]) << std::endl;
-    
 
     return 0; 
 }

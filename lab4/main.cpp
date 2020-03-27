@@ -84,11 +84,8 @@ int removeVal(ds::Array<int>& arr, int val)
           break;
       }
   }
-  // for(int i=0; i<(size-1); i++)
-	// 	{
-	// 		std::cout<<arr[i]<<" ";   //testing to see if val was removed
-	// 	}
   size = arr.Length()-count;
+  
   return size;
 } // 2
 
@@ -126,12 +123,8 @@ int main()
    
 
     std::cout << (sumTarget(b, 60) ? "true" : "false") << std::endl << "\n";
-    std::cout << "newstring length : " << removeVal(b, 23) << "\n \n";
+    std::cout << "newstring length : " << removeVal(b, 23) << "\n\n";
     std::cout << "Index: " << IndexFind(b, 25) << std::endl;
-
-    // std::cout << a << "\n";
-    
-    // std::cout << arrayMax(a) << std::endl;
 
     return 0; 
 }

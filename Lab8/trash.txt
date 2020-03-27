@@ -1,0 +1,42 @@
+template <typename T>
+void RemoveAll(ds::Node<T>* root,const int target)
+{
+  ds::Node<T>* tmp = root, *prev;
+  while(tmp!=NULL){
+    if(tmp->GetData()==target){
+      ds::Node<T>* del = tmp;
+      tmp = tmp->GetLink();
+      prev->SetLink(tmp);
+      delete(del);
+      del = NULL;
+    }
+    if(tmp->GetData()!=target){
+      prev = tmp;
+      tmp = tmp->GetLink();
+    }
+  }
+}
+template <typename C>
+double  SecondLargest(ds::Node<C>* root)
+{
+  double max = root->GetData(); // assume root is largest
+  double secondMax = root->GetData(); 
+  root = root->GetLink(); // follow to the next element
+  while (root != NULL)
+  {
+    // find maximum
+    if(root->GetData() > max)
+    {
+      secondMax = max;
+      max = root->GetData();
+    }
+    // update second max
+    if( root->GetData() > secondMax && root->GetData() != max)
+    {
+      secondMax = root->GetData();
+    }
+
+    root = root->GetLink();
+  }
+  return secondMax;
+}
