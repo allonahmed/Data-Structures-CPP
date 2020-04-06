@@ -27,7 +27,7 @@ int LastOccurrence(ds::da::Vector<T>& data,const T& value)
     return x;
 }
 
-template<typename T>
+template<typename T>   //NEEDS ALOT OF WORK
 void swap(ds::dn::Node<T>* node1, ds::dn::Node<T>* node2){
     ds::dn::Node<T>* tmp;
     tmp = node1->GetPrev();
@@ -48,8 +48,10 @@ void BubbleSort(ds::dn::Node<T>* root)
     ds::dn::Node<T>* node1, *node2;
     for(node1 = root; node1->GetNext() != NULL; node1 = node1->GetNext()){
         for( node2 = node1->GetNext(); node2 != NULL; node2 = node2->GetNext()){
-            if(node2->GetData()>node1->GetData()){
-                swap(node1, node2);
+            if(node2->GetData()<node1->GetData()){
+                T tmpv = node1->GetData();
+                node1->SetData(node2->GetData());
+                node2->SetData(tmpv);
             }
         }
     }
@@ -64,7 +66,7 @@ bool HasCycle(ds::sn::Node<T>* root)
     if(root==NULL){
         return false;
     }
-    while(node1 && node2 && node2->GetLink()){
+    while(node1 && node2 && node2->GetLink()){ // error
         node1 = node1->GetLink();
         node2 = node2->GetLink()->GetLink();
         if(node1 == node2){
@@ -139,13 +141,13 @@ int main()
 
     //--------------questione 2-------------------------//
 
-    // std::cout << "\n\nquestion number two: " << std::endl;
-    // ds::dn::Node<int>* test = GenerateUnsortedList();
-    // std::cout << "unsorted list: ";
-    // PrintList(test);
-    // BubbleSort(test);
-    // std::cout << "sorted list: ";
-    // PrintList(test);
+    std::cout << "\n\nquestion number two: " << std::endl;
+    ds::dn::Node<int>* test = GenerateUnsortedList();
+    std::cout << "unsorted list: ";
+    PrintList(test);
+    BubbleSort(test);
+    std::cout << "sorted list: ";
+    PrintList(test);
     // // unfinished
      //--------------questione 3-------------------------//
 
@@ -168,11 +170,11 @@ int main()
     std::cout << "no repeats: " << AdjacentDuplicatesRemoval(rep) << std::endl;
 
 
-    //--------------questione 4-------------------------//
+    //--------------questione 5-------------------------//
     std::cout << "\n\nquestion number five: " << std::endl;
     ds::da::Vector<int> newt = GenerateLengthyList();
     std::cout << newt << std::endl;
-    std::cout << "max sum is : " << MaxKSum << std::endl;
+    std::cout << "max sum is : " << MaxKSum(newt, 2) << std::endl;
 
 
     
