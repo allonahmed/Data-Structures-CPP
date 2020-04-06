@@ -29,6 +29,7 @@ int LastOccurrence(ds::da::Vector<T>& data,const T& value)
 
 template<typename T>   //NEEDS ALOT OF WORK
 void swap(ds::dn::Node<T>* node1, ds::dn::Node<T>* node2){
+    //Do Not Swap The Nodes; Just Their Data 
     ds::dn::Node<T>* tmp;
     tmp = node1->GetPrev();
     if(tmp){
@@ -45,6 +46,7 @@ template <typename T>
 void BubbleSort(ds::dn::Node<T>* root)
 {
     //Rewrite Definition of BubbleSort() Here
+    //Not The BuubleSort Algorithm
     ds::dn::Node<T>* node1, *node2;
     for(node1 = root; node1->GetNext() != NULL; node1 = node1->GetNext()){
         for( node2 = node1->GetNext(); node2 != NULL; node2 = node2->GetNext()){
@@ -61,7 +63,8 @@ void BubbleSort(ds::dn::Node<T>* root)
 template <typename T>
 bool HasCycle(ds::sn::Node<T>* root)
 {
-    //Rewrite Definition of HasCycle() Here 
+    //Rewrite Definition of HasCycle() Here
+    //Does Not Work For All Cases 
     ds::sn::Node<T>* node1 = root, *node2 = root;
     if(root==NULL){
         return false;
@@ -99,7 +102,7 @@ std::string AdjacentDuplicatesRemoval(std::string str)
             str2 += word.Top();
             word.Pop();
         }
-        reverse(str2.begin(),str2.end());
+        reverse(str2.begin(),str2.end()); //Cannot Use This Function Unless You Defined It
         str = str2;
         return str;
 }
