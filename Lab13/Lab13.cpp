@@ -13,41 +13,47 @@ void ReverseContent(std::ifstream& in,std::ofstream& out)
     return;
 }
 
-bool ifNumber(char s){
-    if (isdigit(s) == false && isdigit(s)==0) {
-      return false; 
-    }
-    int x =s-48;
-    if (x>=0){
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
+// bool ifNumber(char s){
+//     if (isdigit(s) == false && isdigit(s)==0) {
+//       return false; 
+//     }
+//     int x =s-48;
+//     if (x>=0){
+//       return true;
+//     }
+//     else {
+//       return false;
+//     }
+//   }
 
 
 bool IsPattern(std::string str)
 {  
-  char arrow = '^';
-  char letter = 'a';
-  int size = str.size();
-  if(size%3!=0){
+  int counta = 0, countb = 0;
+
+  for(int i = 0; i<str.size()/2; i++){
+    if(str[i]!='a'){
       return false;
+    }
+    else{
+      counta++;
+    }
   }
-  for(int i = 0; i<str.size(); i+=3){
-      while(str[i]!=letter){            
-          return false;
-      }
-      if(str[i+1]!=arrow){
-          return false;
-      }
-      if(ifNumber(str[i+2])==false){
-          return false;
-      } 
-      letter++;
+  for(int i = str.size()-1; i>=str.size()/2; i--){
+    if(str[i]!='b'){
+      return false;
+    }
+    else{
+      countb++;
+    }
   }
-  return true;
+
+  if(countb == counta){
+    return true;
+  }
+  else{
+    return false;
+  }
 }
 
 int main()
@@ -57,16 +63,19 @@ int main()
 //     Allon << "hello world!\n";
 //     Allon.close();
 
-    std::string test= "a^2b^92c^4d^5";
-    std::string name = "a^3b^3c^5d^6";
-    string ext = "a^3b^3c^0d^-1";
+  std::string test= "abcdefg";
+  std::string name = "abbbba";
+  std::string ext = "";
+  std::string ext1 = "aaaaaaaaabbbbbbbbb";
+
 
   
 
   cout << boolalpha;
   cout << IsPattern(name) << endl;
-   cout << IsPattern(test) << endl;
-   cout << IsPattern(ext) << endl;
+  cout << IsPattern(test) << endl;
+  cout << IsPattern(ext) << endl;
+  cout << IsPattern(ext1) << endl;
     
 
     return 0; 
