@@ -43,7 +43,32 @@ int DuplicatesSum(ds::da::Vector<int>& data)
 		sum += count[i];
 	}
 	return sum;
-}
+} //method 1
+
+int DuplicatesSum1(ds::da::Vector<int>& data){
+	ds::da::Map<int, int> map;
+	int sum = 0;
+
+	for(int i = 0; i<data.Size(); i+=1){
+		if(map.Contains(data[i]))
+		{
+			if(map.Get(data[i])<=1)
+			{
+				map.Get(data[i])++;
+				sum += data[i];
+			}
+			else
+			{
+				continue;
+			}
+		}
+		else
+		{
+			map.Put(data[i], 1);
+		}
+	}
+	return sum;
+} //method 2
 
 int main()
 {
@@ -66,6 +91,8 @@ int main()
 	vec1.InsertFirst(5);
 	
 	
-	std::cout << "duplicate sum: " << DuplicatesSum(vec) << std::endl;
-	std::cout << "duplicate sum: " << DuplicatesSum(vec1) << std::endl;
+	std::cout << "duplicate sum of vec: " << DuplicatesSum(vec) << std::endl;
+	std::cout << "duplicate sum of vec1: " << DuplicatesSum(vec1) << std::endl;
+	std::cout << "duplicate sum of vec: " << DuplicatesSum1(vec) << std::endl;
+	std::cout << "duplicate sum of vec1: " << DuplicatesSum1(vec1) << std::endl;
 }
