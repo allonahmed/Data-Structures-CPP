@@ -19,10 +19,10 @@ ds::da::Vector<int> TwoSum(ds::da::Vector<int>& data,int target)
 	}
 	for(int i = 0; i<data.Size(); i+=1 ){ //O(n)
 		int dif = target - data[i];   // diference in target and current element
-		if(map.Contains(dif) && map[dif] != 1){ 
+		if(map.Contains(dif) && map[dif] != i){ 
 			//if map contains the difference, we have both elements
 			vec.InsertFirst(i);
-			vec.InsertFirst(map[dif]);
+			vec.Insert(map[dif]);
 			break;
 		}
 	}
@@ -40,12 +40,12 @@ int main()
 
 	ds::da::Vector<int> vec;
 	vec.InsertLast(7);
-	vec.InsertLast(9);
+	vec.InsertLast(3);
 	vec.InsertLast(6);
 	vec.InsertLast(1);
 	vec.InsertLast(4);
 	vec.InsertLast(13);
-	int target = 17;
+	int target = 10;
 
 	ds::da::Vector<int> test = TwoSum(vec, target);
 	std::cout << "[";
