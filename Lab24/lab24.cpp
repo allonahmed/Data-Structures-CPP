@@ -514,15 +514,15 @@ namespace ds::dn
 int main()
 {
 	ds::dn::BNode<int>* tree = NULL;
-	ds::dn::BTInsert(tree,13);
-    ds::dn::BTInsert(tree,5);
-    ds::dn::BTInsert(tree,7);
+	ds::dn::BSTInsert(tree,13);
+    ds::dn::BSTInsert(tree,5);
+    ds::dn::BSTInsert(tree,7);
     ds::dn::BSTInsert(tree,34);
     ds::dn::BSTInsert(tree,12);
     ds::dn::BSTInsert(tree,9);
 	ds::dn::BSTInsert(tree,8);
 	ds::dn::BSTInsert(tree,17);
-	ds::dn::BSTInsert(tree,20);
+	ds::dn::BSTInsert(tree,14);
 	ds::dn::BSTInsert(tree,2);
 	ds::dn::BSTInsert(tree,11);
 

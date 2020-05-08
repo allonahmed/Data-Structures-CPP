@@ -75,6 +75,7 @@ void printVector(ds::da::Vector<T> vec)
 
 //Question 2
 
+/* hint use a queue*/
 struct Point
 {
 	int x;

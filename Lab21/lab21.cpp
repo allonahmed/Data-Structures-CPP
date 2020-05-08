@@ -13,7 +13,7 @@ ds::da::Vector<int> TwoSum(ds::da::Vector<int>& data,int target)
 	ds::da::Map<int, int> map;
 	ds::da::Vector<int> vec(2);
 
-	for(int i = 0; i < data.Size(); i+=1) //On)
+	for(int i = 0; i < data.Size(); i+=1) //O(n)
 	{
 		map.Put(data[i], i);
 	}
@@ -28,6 +28,8 @@ ds::da::Vector<int> TwoSum(ds::da::Vector<int>& data,int target)
 	}
 	return vec;
 }
+
+
 
 
 int SingleNumber(ds::da::Vector<int>& data)

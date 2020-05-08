@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include "Vector.h"
 #include "Array.h"
 
 void RandInts(ds::Array<int>& arr,int lo,int hi)
@@ -75,6 +76,7 @@ int differenceElement(ds::Array<int>& arr, int target){
   }
   return count;
 }
+
 
 
 template <typename T>
