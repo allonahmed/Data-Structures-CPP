@@ -150,73 +150,7 @@ namespace ds
 
 			BNode(const T& data,BNode<T>* p) : data(data), p(p), left(NULL), right(NULL) {}
 			
-			~BNode() {}
-              
-            void PreOrderPrint(BNode<T>* root)
-            {
-                if(root != NULL)
-                {                                    
-                    std::cout << root->data << " ";
-                    PreOrderPrint(root->left);
-                    PreOrderPrint(root->right);
-                }
-            }
-                
-            ds::dn::BNode<T>* TreeMinimum(ds::dn::BNode<int>* root)
-            {
-                ds::dn::BNode<int>* tmp = root;
-                while(tmp->left != NULL)
-                {
-                    tmp = tmp->left;
-                }
-                return tmp;
-            }
-            
-            ds::dn::BNode<T>* TreeMaximum(ds::dn::BNode<int>* root)
-            {
-                ds::dn::BNode<int>* tmp = root;
-
-                while(tmp->right != NULL)
-                {
-                    tmp = tmp->right;
-                }
-                return tmp;
-            }
-            ds::dn::BNode<T>* BSTSearch(ds::dn::BNode<T>* root,const T& value)
-            {
-                if(root == NULL || root->data == value)
-                {
-                    return root;
-                }
-                else if(root->data > value)
-                {
-                    return BSTSearch(root->left,value);
-                }
-                else
-                {
-                    return BSTSearch(root->right,value);
-                }
-            }
-
-            ds::dn::BNode<T>* TreeSuccessor(ds::dn::BNode<int>* x)
-            {
-                ds::dn::BNode<int>* tmp = BSTSearch(x, x->data);
-                ds::dn::BNode<int>* parent = tmp->p;
-                if(tmp->right != NULL)
-                {
-                    return TreeMinimum(x->right);
-                }
-                while(parent != NULL && tmp == parent->right)
-                {
-                    tmp = parent;
-                    parent = parent->p;
-
-                }
-
-                return parent;
-                
-            }
-          
+			~BNode() {}                    
 		};
 
 
